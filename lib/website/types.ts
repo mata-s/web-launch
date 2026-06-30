@@ -7,6 +7,7 @@ import { Theme } from './theme';
 export type HeroVariant = Theme;
 export type GalleryVariant = Theme | 'grid';
 export type FeatureVariant = Theme;
+export type ServicesVariant = Theme;
 
 export type GalleryImage = {
   id: string;
@@ -38,6 +39,7 @@ export type ConceptSection = {
 export type ServicesSection = {
   id: string;
   type: 'services';
+  variant: ServicesVariant;
   title: string;
   items: {
     title: string;
@@ -74,7 +76,8 @@ export type Section =
   | HeroSection
   | ConceptSection
   | ServicesSection
-  | GallerySection;
+  | GallerySection
+  | FeatureSection;
 
 export type WebsiteData = {
   siteName: string;
