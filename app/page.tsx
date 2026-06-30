@@ -4,7 +4,7 @@ import ChatPanel from './components/chat/ChatPanel';
 import PreviewPanel from './components/website/PreviewPanel';
 import { useState } from 'react';
 import { generateWebsite } from '@/lib/ai/generateWebsite';
-import { mockWebsite, WebsiteData } from '@/lib/mock/website';
+import { mockWebsite, Section, WebsiteData } from '@/lib/website';
 
 export default function Home() {
   const [website, setWebsite] = useState<WebsiteData>(mockWebsite);
@@ -19,6 +19,25 @@ export default function Home() {
     } finally {
       setIsGenerating(false);
     }
+  };
+
+  const handleChangeSectionVariant = (
+    sectionId: string,
+    variant: string,
+  ) => {
+    setWebsite((currentWebsite) => ({
+      ...currentWebsite,
+      sections: currentWebsite.sections.map((section) => {
+        if (section.id !== sectionId || !('variant' in section)) {
+          return section;
+        }
+
+        return {
+          ...section,
+          variant,
+        } as Section;
+      }),
+    }));
   };
 
   return (
@@ -47,7 +66,10 @@ export default function Home() {
             </div>
           </div>
         )}
-        <PreviewPanel website={website} />
+        <PreviewPanel
+          website={website}
+          onChangeSectionVariant={handleChangeSectionVariant}
+        />
       </div>
     </main>
   );

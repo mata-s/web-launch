@@ -1,4 +1,4 @@
-import { ServicesSection as ServicesSectionData } from '@/lib/mock/website';
+import { ServicesSection as ServicesSectionData } from '@/lib/website';
 
 type ServicesSectionProps = {
   section: ServicesSectionData;

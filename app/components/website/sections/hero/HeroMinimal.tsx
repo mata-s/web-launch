@@ -1,4 +1,4 @@
-import { HeroSection as HeroSectionData } from '@/lib/mock/website';
+import { HeroSection as HeroSectionData } from '@/lib/website';
 
 type HeroMinimalProps = {
   section: HeroSectionData;

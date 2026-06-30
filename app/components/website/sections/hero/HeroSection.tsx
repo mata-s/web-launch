@@ -1,22 +1,16 @@
-import { HeroSection as HeroSectionData } from '@/lib/mock/website';
-import HeroLuxury from './HeroLuxury';
-import HeroMinimal from './HeroMinimal';
-import HeroModern from './HeroModern';
+import { HeroSection as HeroSectionData } from '@/lib/website';
+import { heroRegistry } from '../../registry/heroRegistry';
 
 type HeroSectionProps = {
   section: HeroSectionData;
 };
 
 export default function HeroSection({ section }: HeroSectionProps) {
-  switch (section.variant) {
-    case 'minimal':
-      return <HeroMinimal section={section} />;
+  const Component = heroRegistry[section.variant];
 
-    case 'modern':
-      return <HeroModern section={section} />;
-
-    case 'luxury':
-    default:
-      return <HeroLuxury section={section} />;
+  if (!Component) {
+    return null;
   }
+
+  return <Component section={section} />;
 }

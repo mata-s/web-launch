@@ -1,4 +1,4 @@
-import { ConceptSection as ConceptSectionData } from '@/lib/mock/website';
+import { ConceptSection as ConceptSectionData } from '@/lib/website';
 
 type ConceptSectionProps = {
   section: ConceptSectionData;

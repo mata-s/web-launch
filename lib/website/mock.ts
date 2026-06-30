@@ -1,37 +1,4 @@
-export type WebsiteData = {
-  siteName: string;
-  siteDescription: string;
-  sections: Section[];
-};
-
-export type Section = HeroSection | ConceptSection | ServicesSection;
-
-export type HeroSection = {
-  id: string;
-  type: 'hero';
-  variant: 'luxury' | 'minimal' | 'modern';
-  title: string;
-  description: string;
-  primaryButton: string;
-  secondaryButton: string;
-};
-
-export type ConceptSection = {
-  id: string;
-  type: 'concept';
-  title: string;
-  description: string;
-};
-
-export type ServicesSection = {
-  id: string;
-  type: 'services';
-  items: {
-    title: string;
-    description: string;
-    price: string;
-  }[];
-};
+import { WebsiteData } from './types';
 
 export const mockWebsite: WebsiteData = {
   siteName: 'Belle Hair',
@@ -57,16 +24,39 @@ export const mockWebsite: WebsiteData = {
     {
       id: 'services-1',
       type: 'services',
+      title: '人気メニュー',
       items: [
         {
           title: 'Cut',
           description: '骨格や髪質に合わせた似合わせカット',
-          price: '¥4,500〜',
         },
         {
           title: 'Color',
           description: '透明感のあるカラー',
-          price: '¥7,000〜',
+        },
+      ],
+    },
+    {
+      id: 'gallery-1',
+      type: 'gallery',
+      variant: 'luxury',
+      title: 'サロンギャラリー',
+      subtitle: '店内やスタイル写真をご紹介します。',
+      images: [
+        {
+          id: '1',
+          label: 'Interior',
+          description: '落ち着いた店内空間',
+        },
+        {
+          id: '2',
+          label: 'Hair Style',
+          description: '人気のスタイル',
+        },
+        {
+          id: '3',
+          label: 'Color',
+          description: '透明感カラー',
         },
       ],
     },
