@@ -1,23 +1,30 @@
 import { GalleryImage } from '@/lib/website';
 
 type GalleryGridProps = {
-  title?: string;
-  subtitle?: string;
-  images: GalleryImage[];
+  section: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    images: GalleryImage[];
+  };
 };
 
-export default function GalleryGrid({
-  title = 'Gallery',
-  subtitle = '雰囲気が伝わる写真を並べます。',
-  images,
-}: GalleryGridProps) {
+export default function GalleryGrid({ section }: GalleryGridProps) {
+  const {
+    eyebrow,
+    title = 'Gallery',
+    subtitle = '雰囲気が伝わる写真を並べます。',
+    images,
+  } = section;
   return (
     <section className="bg-white px-8 py-14 md:px-12">
       <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-zinc-400">
-            Gallery
-          </p>
+          {eyebrow && (
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-zinc-400">
+              {eyebrow}
+            </p>
+          )}
           <h3 className="mt-3 text-3xl font-bold text-zinc-950">{title}</h3>
         </div>
         <p className="max-w-md text-sm leading-6 text-zinc-500">{subtitle}</p>

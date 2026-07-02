@@ -12,9 +12,11 @@ export default function FeatureDark({ section }: FeatureDarkProps) {
 
       <div className="relative mx-auto max-w-7xl">
         <div className="max-w-3xl">
-          <p className="inline-flex rounded-full border border-violet-500/40 bg-violet-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-violet-300">
-            Feature
-          </p>
+          {section.eyebrow && (
+            <p className="inline-flex rounded-full border border-violet-500/40 bg-violet-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-violet-300">
+              {section.eyebrow}
+            </p>
+          )}
 
           <h3 className="mt-5 break-keep text-3xl font-black leading-tight tracking-tight sm:text-4xl lg:text-5xl">
             {section.title}

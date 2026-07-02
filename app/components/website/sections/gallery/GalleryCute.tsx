@@ -1,16 +1,21 @@
 import { GalleryImage } from '@/lib/website';
 
 type GalleryCuteProps = {
-  title?: string;
-  subtitle?: string;
-  images: GalleryImage[];
+  section: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    images: GalleryImage[];
+  };
 };
 
-export default function GalleryCute({
-  title = 'Cute Gallery',
-  subtitle = 'やさしく、かわいらしい雰囲気を届けるギャラリー。',
-  images,
-}: GalleryCuteProps) {
+export default function GalleryCute({ section }: GalleryCuteProps) {
+  const {
+    eyebrow,
+    title = 'Cute Gallery',
+    subtitle = 'やさしく、かわいらしい雰囲気を届けるギャラリー。',
+    images,
+  } = section;
   return (
     <section className="relative overflow-hidden bg-pink-50 px-8 py-16 md:px-12 md:py-20">
       <div className="absolute -left-20 top-8 h-56 w-56 rounded-full bg-pink-200/60 blur-3xl" />
@@ -19,9 +24,11 @@ export default function GalleryCute({
 
       <div className="relative mx-auto max-w-7xl">
         <div className="mb-10 text-center">
-          <p className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-pink-500 shadow-md">
-            Cute Gallery
-          </p>
+          {eyebrow && (
+           <p className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-pink-500 shadow-md">
+            {eyebrow}
+            </p>
+          )}
 
           <h3 className="mt-5 text-4xl font-extrabold tracking-tight text-rose-950 md:text-5xl">
             {title}

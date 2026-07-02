@@ -1,24 +1,32 @@
 import { GalleryImage } from '@/lib/website';
 
 type GalleryModernProps = {
-  title?: string;
-  subtitle?: string;
-  images: GalleryImage[];
+  section: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    images: GalleryImage[];
+  };
 };
 
-export default function GalleryModern({
-  title = 'Modern Gallery',
-  subtitle = '洗練されたビジュアルを印象的に見せるレイアウト。',
-  images,
-}: GalleryModernProps) {
+export default function GalleryModern({ section }: GalleryModernProps) {
+  const {
+    eyebrow,
+    title = 'Modern Gallery',
+    subtitle = '洗練されたビジュアルを印象的に見せるレイアウト。',
+    images,
+  } = section;
   return (
     <section className="bg-zinc-950 px-8 py-16 text-white md:px-12 md:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-300">
-              Modern Gallery
-            </p>
+            {eyebrow && (
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-300">
+               {eyebrow}
+              </p>
+            )}
+            
             <h3 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
               {title}
             </h3>

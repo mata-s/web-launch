@@ -1,4 +1,4 @@
-import { Section } from '@/lib/mock/website';
+import { Section } from '@/lib/website';
 import { sectionRegistry } from './registry/sectionRegistry';
 
 type SectionRendererProps = {

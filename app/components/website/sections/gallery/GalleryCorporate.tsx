@@ -1,24 +1,31 @@
 import { GalleryImage } from '@/lib/website';
 
 type GalleryCorporateProps = {
-  title?: string;
-  subtitle?: string;
-  images: GalleryImage[];
+  section: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    images: GalleryImage[];
+  };
 };
 
-export default function GalleryCorporate({
-  title = 'Corporate Gallery',
-  subtitle = '実績や事業内容を信頼感のあるレイアウトで見せます。',
-  images,
-}: GalleryCorporateProps) {
+export default function GalleryCorporate({ section }: GalleryCorporateProps) {
+  const {
+    eyebrow,
+    title = 'Corporate Gallery',
+    subtitle = '実績や事業内容を信頼感のあるレイアウトで見せます。',
+    images,
+  } = section;
   return (
     <section className="bg-slate-50 px-8 py-16 md:px-12 md:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-700">
-              Corporate Gallery
-            </p>
+            {eyebrow && (
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-700">
+                {eyebrow}
+              </p>
+            )}
             <h3 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
               {title}
             </h3>

@@ -11,9 +11,11 @@ export default function FeatureCreative({
     <section className="overflow-hidden bg-linear-to-br from-fuchsia-50 via-white to-cyan-50 px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-fuchsia-600">
-            Creative Feature
-          </p>
+          {section.eyebrow && (
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-fuchsia-600">
+              {section.eyebrow}
+            </p>
+          )}
 
           <h3 className="mt-4 break-keep text-3xl font-black leading-tight text-zinc-900 sm:text-4xl lg:text-5xl">
             {section.title}

@@ -5,16 +5,26 @@ import { WebsiteData } from '@/lib/website';
 
 type PreviewPanelProps = {
   website: WebsiteData;
+  selectedSectionId: string | null;
+  onSelectSection: (sectionId: string) => void;
   onChangeSectionVariant: (sectionId: string, variant: string) => void;
 };
 
 type PreviewMessage = {
   type: 'WEB_LAUNCH_PREVIEW_UPDATE';
   website: WebsiteData;
+  selectedSectionId: string | null;
+};
+
+export type PreviewScrollMessage = {
+  type: 'WEB_LAUNCH_SCROLL_TO_SECTION';
+  sectionId: string;
 };
 
 export default function PreviewPanel({
   website,
+  selectedSectionId,
+  onSelectSection,
   onChangeSectionVariant,
 }: PreviewPanelProps) {
   const [device, setDevice] = useState<'pc' | 'tablet' | 'mobile'>('pc');
@@ -34,19 +44,67 @@ export default function PreviewPanel({
     const message: PreviewMessage = {
       type: 'WEB_LAUNCH_PREVIEW_UPDATE',
       website,
+      selectedSectionId,
     };
 
     iframeRef.current?.contentWindow?.postMessage(message, window.location.origin);
-  }, [website, device]);
+  }, [website, selectedSectionId]);
 
   const handleIframeLoad = () => {
     const message: PreviewMessage = {
       type: 'WEB_LAUNCH_PREVIEW_UPDATE',
       website,
+      selectedSectionId,
     };
 
     iframeRef.current?.contentWindow?.postMessage(message, window.location.origin);
   };
+
+  const scrollToSection = (sectionId: string) => {
+    const message: PreviewScrollMessage = {
+      type: 'WEB_LAUNCH_SCROLL_TO_SECTION',
+      sectionId,
+    };
+
+    iframeRef.current?.contentWindow?.postMessage(message, window.location.origin);
+  };
+
+  useEffect(() => {
+    if (!selectedSectionId) return;
+
+    const timer = window.setTimeout(() => {
+      scrollToSection(selectedSectionId);
+    }, 100);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [selectedSectionId, website]);
+
+  useEffect(() => {
+    const handleMessage = (
+      event: MessageEvent<{ type?: string; sectionId?: string }>,
+    ) => {
+      if (event.origin !== window.location.origin) return;
+
+      if (event.data?.type === 'WEB_LAUNCH_REQUEST_SCROLL_TO_SECTION') {
+        if (!event.data.sectionId) return;
+        scrollToSection(event.data.sectionId);
+        return;
+      }
+
+      if (event.data?.type !== 'WEB_LAUNCH_SELECT_SECTION') return;
+      if (!event.data.sectionId) return;
+
+      onSelectSection(event.data.sectionId);
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, [onSelectSection]);
 
   return (
     <section className="flex h-full w-full flex-col bg-zinc-100">
@@ -111,7 +169,6 @@ export default function PreviewPanel({
         >
           <iframe
             ref={iframeRef}
-            key={device}
             src="/preview"
             title="Website preview"
             className="h-full w-full border-0 bg-white"

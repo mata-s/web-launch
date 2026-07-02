@@ -1,16 +1,21 @@
 import { GalleryImage } from '@/lib/website';
 
 type GalleryCreativeProps = {
-  title?: string;
-  subtitle?: string;
-  images: GalleryImage[];
+  section: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    images: GalleryImage[];
+  };
 };
 
-export default function GalleryCreative({
-  title = 'Creative Gallery',
-  subtitle = '個性や世界観を強く見せる、遊び心のあるギャラリー。',
-  images,
-}: GalleryCreativeProps) {
+export default function GalleryCreative({ section }: GalleryCreativeProps) {
+  const {
+    eyebrow,
+    title = 'Creative Gallery',
+    subtitle = '個性や世界観を強く見せる、遊び心のあるギャラリー。',
+    images,
+  } = section;
   return (
     <section className="relative overflow-hidden bg-[#fff7ed] px-8 py-16 md:px-12 md:py-20">
       <div className="absolute -left-24 top-12 h-64 w-64 rounded-full bg-pink-300/40 blur-3xl" />
@@ -19,9 +24,11 @@ export default function GalleryCreative({
       <div className="relative mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="inline-flex rotate--2deg rounded-full bg-zinc-950 px-4 py-2 text-xs font-black uppercase tracking-[0.3em] text-white shadow-lg">
-              Creative Gallery
-            </p>
+            {eyebrow && (
+              <p className="inline-flex rotate--2deg rounded-full bg-zinc-950 px-4 py-2 text-xs font-black uppercase tracking-[0.3em] text-white shadow-lg">
+                {eyebrow}
+              </p>
+            )}
             <h3 className="mt-5 max-w-3xl text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
               {title}
             </h3>

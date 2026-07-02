@@ -8,9 +8,11 @@ export default function FeatureLuxury({ section }: FeatureProps) {
   return (
     <section className="bg-[#f8f3ef] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
       <div className="mx-auto max-w-7xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-zinc-500">
-          Feature
-        </p>
+        {section.eyebrow && (
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-zinc-500">
+            {section.eyebrow}
+          </p>
+        )}
         <h3 className="mt-4 max-w-3xl break-keep text-3xl font-bold text-zinc-950 sm:text-4xl lg:text-5xl">
           {section.title}
         </h3>

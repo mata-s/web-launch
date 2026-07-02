@@ -10,16 +10,18 @@ export default function HeroWarm({ section }: HeroWarmProps) {
     <section className="bg-[#f7f2ea] px-8 py-20 md:px-12 md:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
         <div>
-          <span className="inline-flex rounded-full bg-amber-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-amber-800">
-            Warm Website
-          </span>
+          {section.eyebrow && (
+            <span className="inline-flex rounded-full bg-amber-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-amber-800">
+              {section.eyebrow}
+            </span>
+          )}
 
           <h2 className="mt-8 text-5xl font-bold leading-tight tracking-tight text-stone-900 md:text-7xl">
             {section.title}
           </h2>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-stone-600">
-            {section.description}
+            {section.subtitle}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">

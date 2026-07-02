@@ -13,16 +13,18 @@ export default function HeroDark({ section }: HeroDarkProps) {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 md:grid-cols-2">
         <div>
-          <span className="inline-flex rounded-full border border-violet-500/40 bg-violet-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-violet-300">
-            Dark Website
-          </span>
+          {section.eyebrow && (
+            <span className="inline-flex rounded-full border border-violet-500/40 bg-violet-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-violet-300">
+              {section.eyebrow}
+            </span>
+          )}
 
           <h2 className="mt-8 text-5xl font-black leading-tight tracking-tight md:text-7xl">
             {section.title}
           </h2>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">
-            {section.description}
+            {section.subtitle}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">

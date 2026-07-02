@@ -1,16 +1,21 @@
 import { GalleryImage } from '@/lib/website';
 
 type GalleryDarkProps = {
-  title?: string;
-  subtitle?: string;
-  images: GalleryImage[];
+  section: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    images: GalleryImage[];
+  };
 };
 
-export default function GalleryDark({
-  title = 'Dark Gallery',
-  subtitle = '黒を基調に、世界観を強く印象づけるギャラリー。',
-  images,
-}: GalleryDarkProps) {
+export default function GalleryDark({ section }: GalleryDarkProps) {
+  const {
+    eyebrow,
+    title = 'Dark Gallery',
+    subtitle = '黒を基調に、世界観を強く印象づけるギャラリー。',
+    images,
+  } = section;
   return (
     <section className="relative overflow-hidden bg-black px-8 py-16 text-white md:px-12 md:py-20">
       <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-violet-600/20 blur-3xl" />
@@ -19,9 +24,11 @@ export default function GalleryDark({
       <div className="relative mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="inline-flex rounded-full border border-violet-500/40 bg-violet-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-violet-300">
-              Dark Gallery
-            </p>
+            {eyebrow && (
+              <p className="inline-flex rounded-full border border-violet-500/40 bg-violet-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-violet-300">
+                {eyebrow}
+              </p>
+            )}
             <h3 className="mt-5 text-4xl font-black tracking-tight md:text-5xl">
               {title}
             </h3>

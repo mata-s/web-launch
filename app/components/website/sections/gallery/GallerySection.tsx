@@ -12,11 +12,5 @@ export default function GallerySection({ section }: GallerySectionProps) {
     return null;
   }
 
-  return (
-    <Component
-      title={section.title}
-      subtitle={section.subtitle}
-      images={section.images}
-    />
-  );
+  return <Component section={section} />;
 }

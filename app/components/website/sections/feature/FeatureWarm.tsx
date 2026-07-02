@@ -9,9 +9,11 @@ export default function FeatureWarm({ section }: FeatureWarmProps) {
     <section className="bg-[#fcf8f2] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-amber-700">
-            Feature
-          </p>
+          {section.eyebrow && (
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-amber-700">
+              {section.eyebrow}
+            </p>
+          )}
 
           <h3 className="mx-auto mt-4 max-w-3xl break-keep text-3xl font-bold leading-tight text-stone-900 sm:text-4xl lg:text-5xl">
             {section.title}

@@ -1,24 +1,31 @@
 import { GalleryImage } from '@/lib/website';
 
 type GalleryWarmProps = {
-  title?: string;
-  subtitle?: string;
-  images: GalleryImage[];
+  section: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    images: GalleryImage[];
+  };
 };
 
-export default function GalleryWarm({
-  title = 'Warm Gallery',
-  subtitle = 'あたたかく、居心地の良さが伝わるギャラリー。',
-  images,
-}: GalleryWarmProps) {
+export default function GalleryWarm({ section }: GalleryWarmProps) {
+  const {
+    eyebrow,
+    title = 'Warm Gallery',
+    subtitle = 'あたたかく、居心地の良さが伝わるギャラリー。',
+    images,
+  } = section;
+
   return (
     <section className="bg-[#faf7f2] px-8 py-16 md:px-12 md:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-amber-700">
-            Warm Gallery
-          </p>
-
+          {eyebrow && (
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-amber-700">
+              {eyebrow}
+            </p>
+          )}
           <h3 className="mt-4 text-4xl font-bold tracking-tight text-stone-900 md:text-5xl">
             {title}
           </h3>

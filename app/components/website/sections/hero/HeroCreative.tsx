@@ -11,25 +11,32 @@ export default function HeroCreative({ section }: HeroCreativeProps) {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-[0.95fr_1.05fr]">
         <div>
-          <span className="inline-flex rotate--2deg rounded-full bg-zinc-950 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white shadow-lg">
-            Creative Website
-          </span>
+          {section.eyebrow && (
+            <span className="inline-flex rotate--2deg rounded-full bg-zinc-950 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white shadow-lg">
+              {section.eyebrow}
+            </span>
+          )}
 
           <h2 className="mt-8 max-w-3xl text-5xl font-black leading-tight tracking-tight text-zinc-950 md:text-7xl">
             {section.title}
           </h2>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-700">
-            {section.description}
+            {section.subtitle}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <button className="rounded-full bg-pink-500 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-pink-500/20 transition hover:-translate-y-0.5 hover:bg-pink-600">
-              {section.primaryButton}
-            </button>
-            <button className="rounded-full border-2 border-zinc-950 bg-white px-7 py-3 text-sm font-bold text-zinc-950 transition hover:-translate-y-0.5">
-              {section.secondaryButton}
-            </button>
+            {section.showPrimaryButton && (
+              <button className="rounded-full bg-pink-500 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-pink-500/20 transition hover:-translate-y-0.5 hover:bg-pink-600">
+                {section.primaryButton}
+              </button>
+            )}
+
+            {section.showSecondaryButton && (
+              <button className="rounded-full border-2 border-zinc-950 bg-white px-7 py-3 text-sm font-bold text-zinc-950 transition hover:-translate-y-0.5">
+                {section.secondaryButton}
+              </button>
+            )}
           </div>
         </div>
 

@@ -8,16 +8,18 @@ export default function HeroMinimal({ section }: HeroMinimalProps) {
   return (
     <section className="bg-white px-8 py-20 text-center md:px-12 md:py-28">
       <div className="mx-auto max-w-4xl">
-        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-zinc-400">
-          Minimal Website
-        </p>
+        {section.eyebrow && (
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-zinc-400">
+            {section.eyebrow}
+          </p>
+        )}
 
         <h2 className="text-5xl font-bold leading-tight tracking-tight text-zinc-950 md:text-7xl">
           {section.title}
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-zinc-600">
-          {section.description}
+          {section.subtitle}
         </p>
 
         <div className="mt-9 flex flex-wrap justify-center gap-3">

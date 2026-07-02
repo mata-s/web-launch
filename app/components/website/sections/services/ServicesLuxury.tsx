@@ -10,9 +10,11 @@ export default function ServicesLuxury({ section }: ServicesLuxuryProps) {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-zinc-500">
-              Services
-            </p>
+            {section.eyebrow && (
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-zinc-500">
+                {section.eyebrow}
+              </p>
+            )}
             <h3 className="mt-4 max-w-3xl break-keep text-3xl font-bold leading-tight tracking-tight text-zinc-950 sm:text-4xl lg:text-5xl">
               {section.title}
             </h3>

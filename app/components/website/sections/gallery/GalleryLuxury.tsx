@@ -1,24 +1,31 @@
 import { GalleryImage } from '@/lib/website';
 
 type GalleryLuxuryProps = {
-  title?: string;
-  subtitle?: string;
-  images: GalleryImage[];
+  section: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    images: GalleryImage[];
+  };
 };
 
-export default function GalleryLuxury({
-  title = 'Luxury Gallery',
-  subtitle = '上質な雰囲気が伝わる写真を美しく見せます。',
-  images,
-}: GalleryLuxuryProps) {
+export default function GalleryLuxury({ section }: GalleryLuxuryProps) {
+  const {
+    eyebrow,
+    title = 'Luxury Gallery',
+    subtitle = '上質な雰囲気が伝わる写真を美しく見せます。',
+    images,
+  } = section;
   return (
     <section className="bg-[#f8f3ef] px-8 py-16 md:px-12 md:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-zinc-500">
-              Luxury Gallery
-            </p>
+            {eyebrow && (
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-zinc-500">
+                {eyebrow}
+              </p>
+            )}
             <h3 className="mt-4 text-4xl font-bold tracking-tight text-zinc-950 md:text-5xl">
               {title}
             </h3>

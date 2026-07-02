@@ -13,16 +13,18 @@ export default function HeroCute({ section }: HeroCuteProps) {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
         <div>
-          <span className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-pink-500 shadow-md">
-            Cute Website
-          </span>
+          {section.eyebrow && (
+            <span className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-pink-500 shadow-md">
+              {section.eyebrow}
+            </span>
+          )}
 
           <h2 className="mt-8 text-5xl font-extrabold leading-tight tracking-tight text-rose-950 md:text-7xl">
             {section.title}
           </h2>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-rose-700">
-            {section.description}
+            {section.subtitle}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">

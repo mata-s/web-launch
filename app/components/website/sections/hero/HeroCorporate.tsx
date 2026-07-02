@@ -9,16 +9,18 @@ export default function HeroCorporate({ section }: HeroCorporateProps) {
     <section className="bg-slate-50 px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1fr_0.9fr] lg:gap-12">
         <div>
-          <p className="mb-5 inline-flex max-w-full rounded-full border border-slate-200 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 shadow-sm sm:text-xs sm:tracking-[0.25em]">
-            Corporate Website
-          </p>
+          {section.eyebrow && (
+            <p className="mb-5 inline-flex max-w-full rounded-full border border-slate-200 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 shadow-sm sm:text-xs sm:tracking-[0.25em]">
+              {section.eyebrow}
+            </p>
+          )}
 
           <h2 className="max-w-3xl break-keep text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-7xl">
             {section.title}
           </h2>
 
           <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-            {section.description}
+            {section.subtitle}
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

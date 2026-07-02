@@ -9,9 +9,11 @@ export default function FeatureCute({ section }: FeatureCuteProps) {
     <section className="overflow-hidden bg-linear-to-br from-pink-50 via-rose-50 to-amber-50 px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
+          {section.eyebrow && (
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-pink-500">
-            Feature
-          </p>
+              {section.eyebrow}
+            </p>
+          )}
 
           <h3 className="mx-auto mt-4 max-w-3xl break-keep text-3xl font-bold leading-tight text-rose-950 sm:text-4xl lg:text-5xl">
             {section.title}
